@@ -1,0 +1,373 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 240 10% 3.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 240 10% 3.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 240 10% 3.9%;
+    --primary: 221.2 83.2% 53.3%;
+    --primary-foreground: 210 40% 98%;
+    --secondary: 210 40% 96.1%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+    --accent: 210 40% 96.1%;
+    --accent-foreground: 222.2 47.4% 11.2%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 221.2 83.2% 53.3%;
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    --background: 222 13% 9%;
+    --foreground: 210 40% 98%;
+    --card: 222 13% 11%;
+    --card-foreground: 210 40% 98%;
+    --popover: 222 13% 9%;
+    --popover-foreground: 210 40% 98%;
+    --primary: 217.2 91.2% 59.8%;
+    --primary-foreground: 222.2 47.4% 11.2%;
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 224.3 76.3% 48%;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+}
+
+@layer components {
+  .subtle-grid {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: linear-gradient(rgba(59, 130, 246, 0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(59, 130, 246, 0.03) 1px, transparent 1px);
+    background-size: 40px 40px;
+    z-index: 1;
+    pointer-events: none;
+    animation: grid-move 20s linear infinite;
+  }
+
+  @keyframes grid-move {
+    0% {
+      transform: translate(0, 0);
+    }
+    100% {
+      transform: translate(40px, 40px);
+    }
+  }
+
+  .gradient-heading {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-blue-600 via-purple-600 to-blue-800;
+  }
+
+  .section-heading {
+    @apply text-3xl md:text-4xl font-bold mb-6 gradient-heading;
+  }
+
+  .nav-link {
+    @apply relative px-3 py-2 transition-colors hover:text-primary;
+  }
+
+  .nav-link.active {
+    @apply text-primary;
+  }
+
+  .social-icon {
+    @apply w-10 h-10 flex items-center justify-center rounded-full bg-secondary text-secondary-foreground transition-all duration-300 hover:bg-primary hover:text-primary-foreground;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .social-icon::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.5s;
+  }
+
+  .social-icon:hover::before {
+    left: 100%;
+  }
+
+  .professional-card {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(59, 130, 246, 0.1);
+    backdrop-filter: blur(10px);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .professional-card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(59, 130, 246, 0.05), transparent);
+    transition: left 0.6s ease-in-out;
+  }
+
+  .professional-card:hover::before {
+    left: 100%;
+  }
+
+  .professional-card:hover {
+    border-color: rgba(59, 130, 246, 0.3);
+    box-shadow: 0 8px 32px rgba(59, 130, 246, 0.1);
+  }
+
+  .security-badge {
+    position: relative;
+    background: linear-gradient(135deg, rgba(59, 130, 246, 0.1), rgba(147, 51, 234, 0.1));
+    border: 1px solid rgba(59, 130, 246, 0.2);
+    backdrop-filter: blur(10px);
+    overflow: hidden;
+  }
+
+  .security-badge::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(59, 130, 246, 0.2), transparent);
+    transition: left 0.8s ease-in-out;
+  }
+
+  .security-badge:hover::before {
+    left: 100%;
+  }
+
+  .matrix-rain {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background: rgba(0, 0, 0, 0.9);
+  }
+
+  .matrix-column {
+    position: absolute;
+    top: -100%;
+    width: 20px;
+    height: 100vh;
+    animation: matrix-fall 3s linear infinite;
+  }
+
+  .matrix-char {
+    display: block;
+    color: #00ff00;
+    font-family: monospace;
+    font-size: 14px;
+    line-height: 20px;
+    opacity: 0.8;
+    animation: matrix-flicker 0.5s infinite;
+  }
+
+  @keyframes matrix-fall {
+    0% {
+      top: -100%;
+    }
+    100% {
+      top: 100%;
+    }
+  }
+
+  @keyframes matrix-flicker {
+    0%,
+    100% {
+      opacity: 0.8;
+    }
+    50% {
+      opacity: 0.3;
+    }
+  }
+
+  .matrix-mode::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.9);
+    z-index: 9999;
+    pointer-events: none;
+    animation: matrix-overlay 5s ease-in-out;
+  }
+
+  .matrix-mode::after {
+    content: "01001000 01100001 01100011 01101011 01100101 01110010";
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #00ff00;
+    font-family: monospace;
+    font-size: 24px;
+    z-index: 10000;
+    pointer-events: none;
+    animation: matrix-text 5s ease-in-out;
+  }
+
+  @keyframes matrix-overlay {
+    0%,
+    100% {
+      opacity: 0;
+    }
+    50% {
+      opacity: 1;
+    }
+  }
+
+  @keyframes matrix-text {
+    0%,
+    100% {
+      opacity: 0;
+      transform: translate(-50%, -50%) scale(0.5);
+    }
+    50% {
+      opacity: 1;
+      transform: translate(-50%, -50%) scale(1);
+    }
+  }
+
+  .rainbow-header {
+    background: linear-gradient(45deg, #ff0000, #ff7f00, #ffff00, #00ff00, #0000ff, #4b0082, #9400d3);
+    background-size: 400% 400%;
+    animation: rainbow-shift 2s ease infinite;
+  }
+
+  .rainbow-text {
+    background: linear-gradient(45deg, #ff0000, #ff7f00, #ffff00, #00ff00, #0000ff, #4b0082, #9400d3);
+    background-size: 400% 400%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: rainbow-shift 2s ease infinite;
+  }
+
+  .rainbow-mode {
+    animation: rainbow-body 3s ease-in-out;
+  }
+
+  @keyframes rainbow-shift {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+
+  @keyframes rainbow-body {
+    0%,
+    100% {
+      filter: hue-rotate(0deg);
+    }
+    25% {
+      filter: hue-rotate(90deg);
+    }
+    50% {
+      filter: hue-rotate(180deg);
+    }
+    75% {
+      filter: hue-rotate(270deg);
+    }
+  }
+
+  .power-mode {
+    animation: power-shake 0.1s infinite;
+  }
+
+  .power-mode * {
+    animation: power-glow 0.5s ease-in-out;
+  }
+
+  @keyframes power-shake {
+    0%,
+    100% {
+      transform: translateX(0);
+    }
+    25% {
+      transform: translateX(-2px);
+    }
+    75% {
+      transform: translateX(2px);
+    }
+  }
+
+  @keyframes power-glow {
+    0% {
+      box-shadow: 0 0 5px rgba(255, 193, 7, 0.5);
+    }
+    50% {
+      box-shadow: 0 0 20px rgba(255, 193, 7, 0.8), 0 0 30px rgba(255, 193, 7, 0.6);
+    }
+    100% {
+      box-shadow: 0 0 5px rgba(255, 193, 7, 0.5);
+    }
+  }
+
+  @media (max-width: 768px) {
+    .section-heading {
+      @apply text-2xl mb-4;
+    }
+
+    .social-icon {
+      @apply w-12 h-12 text-base;
+    }
+
+    .nav-link {
+      @apply py-3 px-4 text-base;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .gradient-heading,
+    .subtle-grid,
+    .matrix-mode,
+    .rainbow-mode,
+    .power-mode {
+      animation: none;
+    }
+  }
+}

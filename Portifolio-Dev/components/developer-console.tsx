@@ -45,7 +45,7 @@ const DeveloperConsole = () => {
         "  exit          - Fecha o console e limpa",
         "",
         "🎨 INTERFACE:",
-        "  theme [dark|light] - Altera tema", // Falta aplicar
+        "  theme [dark|light] - Altera tema", 
         "  rainbow       - Ativa modo arco-íris",
         "  matrix        - Efeito Matrix",
         "  power         - Modo power ativado",
@@ -479,38 +479,6 @@ const DeveloperConsole = () => {
   }, [isOpen])
 
   
-  // useEffect(() => {
-  //   const handleKeyDown = (e: KeyboardEvent) => {
-  //     if (e.ctrlKey && e.key === ".") {
-  //       e.preventDefault()
-  //       setIsOpen(!isOpen)
-        
-  //     }
-
-  //     // Detectar digitação de "console" em qualquer lugar
-  //     if (!isOpen) {
-  //       const recentKeys = sessionStorage.getItem("recentKeys") || ""
-  //       const newKeys = (recentKeys + e.key).slice(-7)
-  //       sessionStorage.setItem("recentKeys", newKeys)
-
-  //       if (newKeys === "console") {
-  //         setIsOpen(true)
-  //         sessionStorage.removeItem("recentKeys")
-  //       }
-  //     }
-  //   }
-
-  //   window.addEventListener("keydown", handleKeyDown)
-  //   return () => window.removeEventListener("keydown", handleKeyDown)
-  // }, [isOpen])
-
-  // // Auto-focus input quando abrir
-  // useEffect(() => {
-  //   if (isOpen && inputRef.current) {
-  //     inputRef.current.focus()
-  //   }
-  // }, [isOpen])
-
   // Scroll para baixo quando adicionar comando
   useEffect(() => {
     if (consoleRef.current) {
@@ -645,8 +613,13 @@ useEffect(() => {
             <span className="text-green-400 font-semibold">Developer Console</span>
             <span className="text-green-300/60 text-xs">v2.0.1</span>
           </div>
-          <button onClick={() => setIsOpen(false)} className="text-green-400 hover:text-red-400 transition-colors">
-            <X className="w-4 h-4" />
+          <button
+            onClick={() => {
+            setIsOpen(false);
+            setInput("");
+            setHistory([]);}}
+              className="text-green-400 hover:text-red-400 transition-colors">
+              <X className="w-4 h-4" />
           </button>
         </div>
 

@@ -423,10 +423,10 @@ const DeveloperConsole = () => {
     },
   }
 
-  // Ativar console com Ctrl+`
+  // Ativar console com Ctrl+.
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.ctrlKey && e.key === "`") {
+      if (e.ctrlKey && e.key === ".") {
         e.preventDefault()
         setIsOpen(!isOpen)
       }
@@ -584,7 +584,7 @@ const DeveloperConsole = () => {
               <div className="text-green-400 font-bold">🚀 GUILHERME BODNAR - DEVELOPER CONSOLE</div>
               <div className="text-xs mt-1">Versão 2.0.1 | Cybersecurity Edition</div>
               <div className="text-xs mt-2">💡 Digite 'help' para ver comandos disponíveis</div>
-              <div className="text-xs">🎮 Ativação: Ctrl+` ou digite 'console' em qualquer lugar</div>
+              <div className="text-xs">🎮 Ativação: Ctrl + . ou digite 'console' em qualquer lugar</div>
               <div className="border-t border-green-500/20 my-2"></div>
             </div>
           )}

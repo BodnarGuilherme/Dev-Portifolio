@@ -5,9 +5,10 @@ import type { Metadata } from "next"
 import { Inter, Poppins } from "next/font/google"
 import "./globals.css"
 import { ThemeProvider } from "@/components/theme-provider"
-
+// npx next dev -H 10.106.0.90 -> Subir com meu IP para acessar de outro dispositivo
 // <<< 1. IMPORTE O SEU CONSOLE AQUI
 import DeveloperConsole from "@/components/developer-console"
+import { ConsoleToggleButton } from "@/components/ConsoleToggleButton";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -47,8 +48,8 @@ export default function RootLayout({
         </ThemeProvider>
 
         {/* <<< 2. ADICIONE O COMPONENTE DO CONSOLE AQUI */}
-        <DeveloperConsole />
-        
+        {/* <DeveloperConsole /> */}
+        <ConsoleToggleButton />
       </body>
     </html>
   )

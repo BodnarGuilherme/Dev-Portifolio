@@ -23,6 +23,13 @@ const DeveloperConsole = () => {
   const inputRef = useRef<HTMLInputElement>(null)
   const consoleRef = useRef<HTMLDivElement>(null)
   const { theme, setTheme } = useTheme()
+  const [isKeyboardVisible, setIsKeyboardVisible] = useState(false);
+  const handleCloseAndClear = () => {
+  setIsOpen(false);
+  setInput("");
+  setHistory([]); // Limpa o histórico de comandos
+};
+  
 
   // Comandos disponíveis
   const commands = {
@@ -34,11 +41,11 @@ const DeveloperConsole = () => {
         "📋 BÁSICOS:",
         "  help          - Mostra esta ajuda",
         "  clear         - Limpa o console",
-        "  whoami        - Informações do desenvolvedor",
-        "  exit          - Fecha o console",
+        "  info          - Informações do desenvolvedor",
+        "  exit          - Fecha o console e limpa",
         "",
         "🎨 INTERFACE:",
-        "  theme [dark|light] - Altera tema",
+        "  theme [dark|light] - Altera tema", // Falta aplicar
         "  rainbow       - Ativa modo arco-íris",
         "  matrix        - Efeito Matrix",
         "  power         - Modo power ativado",
@@ -70,7 +77,7 @@ const DeveloperConsole = () => {
         return []
       },
     },
-    whoami: {
+    info: {
       description: "Informações do desenvolvedor",
       execute: () => [
         "👨‍💻 GUILHERME BODNAR",
@@ -415,45 +422,94 @@ const DeveloperConsole = () => {
       },
     },
     exit: {
-      description: "Fecha o console",
+      description: "Fecha e limpa o console",
       execute: () => {
-        setIsOpen(false)
-        return []
+      handleCloseAndClear();
+      return []; // Retorna um array vazio para não imprimir nada
       },
     },
   }
 
   // Ativar console com Ctrl+.
   useEffect(() => {
-    const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.ctrlKey && e.key === ".") {
-        e.preventDefault()
-        setIsOpen(!isOpen)
-      }
+  // Função para lidar com eventos do teclado
+  const handleKeyDown = (e: KeyboardEvent) => {
+    // 1. Atalho principal com a tecla PONTO
+    if (e.ctrlKey && e.key === ".") {
+      e.preventDefault();
+      setIsOpen((prevIsOpen) => !prevIsOpen);
+    }
 
-      // Detectar digitação de "console" em qualquer lugar
-      if (!isOpen) {
-        const recentKeys = sessionStorage.getItem("recentKeys") || ""
-        const newKeys = (recentKeys + e.key).slice(-7)
-        sessionStorage.setItem("recentKeys", newKeys)
+    // 2. Lógica robusta para digitar "console"
+    if (!isOpen) {
+      if (e.key.length === 1 && e.key.match(/[a-z]/i)) {
+        const recentKeys = sessionStorage.getItem("recentKeys") || "";
+        const newKeys = (recentKeys + e.key.toLowerCase()).slice(-7);
+        sessionStorage.setItem("recentKeys", newKeys);
 
         if (newKeys === "console") {
-          setIsOpen(true)
-          sessionStorage.removeItem("recentKeys")
+          setIsOpen(true);
+          sessionStorage.removeItem("recentKeys");
         }
       }
     }
+  };
 
-    window.addEventListener("keydown", handleKeyDown)
-    return () => window.removeEventListener("keydown", handleKeyDown)
-  }, [isOpen])
+  // 3. Função para lidar com o clique do botão
+  const handleToggleEvent = () => {
+    setIsOpen((prevIsOpen) => !prevIsOpen);
+  };
 
-  // Auto-focus input quando abrir
+  // Adiciona os "ouvintes" para o teclado e para o evento do botão
+  window.addEventListener("keydown", handleKeyDown);
+  window.addEventListener("toggleConsole", handleToggleEvent);
+
+  // Limpa os "ouvintes" quando o componente não estiver mais na tela
+  return () => {
+    window.removeEventListener("keydown", handleKeyDown);
+    window.removeEventListener("toggleConsole", handleToggleEvent);
+  };
+}, [isOpen]);
+
+ // Auto-focus input quando abrir
   useEffect(() => {
     if (isOpen && inputRef.current) {
       inputRef.current.focus()
     }
   }, [isOpen])
+
+  
+  // useEffect(() => {
+  //   const handleKeyDown = (e: KeyboardEvent) => {
+  //     if (e.ctrlKey && e.key === ".") {
+  //       e.preventDefault()
+  //       setIsOpen(!isOpen)
+        
+  //     }
+
+  //     // Detectar digitação de "console" em qualquer lugar
+  //     if (!isOpen) {
+  //       const recentKeys = sessionStorage.getItem("recentKeys") || ""
+  //       const newKeys = (recentKeys + e.key).slice(-7)
+  //       sessionStorage.setItem("recentKeys", newKeys)
+
+  //       if (newKeys === "console") {
+  //         setIsOpen(true)
+  //         sessionStorage.removeItem("recentKeys")
+  //       }
+  //     }
+  //   }
+
+  //   window.addEventListener("keydown", handleKeyDown)
+  //   return () => window.removeEventListener("keydown", handleKeyDown)
+  // }, [isOpen])
+
+  // // Auto-focus input quando abrir
+  // useEffect(() => {
+  //   if (isOpen && inputRef.current) {
+  //     inputRef.current.focus()
+  //   }
+  // }, [isOpen])
 
   // Scroll para baixo quando adicionar comando
   useEffect(() => {
@@ -462,11 +518,33 @@ const DeveloperConsole = () => {
     }
   }, [history])
 
+// Efeito para detectar o teclado virtual usando visualViewport
+useEffect(() => {
+  const visualViewport = window.visualViewport;
+  // Proteção para navegadores mais antigos que não têm esta API
+  if (!visualViewport) return;
+
+  const handleResize = () => {
+    // Se a altura visível for significativamente menor que a altura da janela,
+    // assumimos que o teclado está aberto.
+    const isKeyboardOpen = visualViewport.height < window.innerHeight - 100; // 100px é uma tolerância segura
+    setIsKeyboardVisible(isKeyboardOpen);
+  };
+
+  visualViewport.addEventListener('resize', handleResize);
+
+  // Limpa o listener quando o componente é fechado
+  return () => {
+    visualViewport.removeEventListener('resize', handleResize);
+  };
+}, []); // O array vazio [] garante que este efeito rode apenas uma vez
+
+
   const executeCommand = async (cmd: string) => {
     const trimmedCmd = cmd.trim()
     if (!trimmedCmd) return
 
-    const [commandName, ...args] = trimmedCmd.split(" ")
+    const [commandName, ...args] = trimmedCmd.toLowerCase().split(" ")
     const timestamp = new Date().toLocaleTimeString()
 
     // Adicionar comando ao histórico
@@ -555,11 +633,11 @@ const DeveloperConsole = () => {
   return (
     <AnimatePresence>
       <motion.div
-        initial={{ opacity: 0, y: 50 }}
-        animate={{ opacity: 1, y: 0 }}
-        exit={{ opacity: 0, y: 50 }}
-        className="fixed bottom-4 right-4 w-[600px] h-[400px] bg-black/95 backdrop-blur-md border border-green-500/30 rounded-lg shadow-2xl z-50 font-mono text-sm overflow-hidden"
-      >
+      initial={{ opacity: 0, y: 50 }}
+      animate={{ opacity: 1, y: 0 }}
+      exit={{ opacity: 0, y: 50 }}
+      className={`fixed z-50 font-mono overflow-hidden bg-black/95 backdrop-blur-md shadow-2xl border border-green-500/30 rounded-lg text-base md:text-sm bottom-4 left-4 right-4 md:left-auto md:right-4 md:bottom-4 md:w-[600px] ${isKeyboardVisible ? 'h-[45vh]' : 'h-[55vh]'} md:h-[400px]`}
+>
         {/* Header */}
         <div className="flex items-center justify-between p-3 border-b border-green-500/30 bg-green-500/10">
           <div className="flex items-center gap-2">

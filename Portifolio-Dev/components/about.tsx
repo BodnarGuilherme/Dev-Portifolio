@@ -6,7 +6,7 @@ import { Card } from "@/components/ui/card"
 import { Code, Shield, Cloud, Network, Monitor } from "lucide-react"
 
 const About = () => {
-  const developmentSkills = ["Python", "Java", "C++", "JavaScript", "HTML5", "CSS", "C#", "PHP", "Next.js", "React"]
+  const developmentSkills = ["Python", "Java", "C++", "JavaScript", "HTML5", "CSS", "C#", "PHP", "Next.js", "React", "UX/UI Design"]
 
   const networkingSkills = [
     "Huawei S5720-28X-PWR-LI-AC",

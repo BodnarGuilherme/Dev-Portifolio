@@ -28,7 +28,7 @@ const Footer = () => {
   }
 
   return (
-    <footer className="py-8 border-t border-border/40 relative">
+    <footer id="site-footer" className="py-8 border-t border-border/40 relative">
       {/* Coffee Counter Easter Egg */}
       {showCoffeeMessage && (
         <motion.div
@@ -76,7 +76,7 @@ const Footer = () => {
               title={`Cafés: ${coffeeCount}`}
             >
               <Coffee className="w-4 h-4" />
-              <span className="text-xs">×{coffeeCount}</span>
+              <span className="text-xs">x{coffeeCount}</span>
             </motion.button>{" "}
             usando Next.js e React.
           </motion.p>

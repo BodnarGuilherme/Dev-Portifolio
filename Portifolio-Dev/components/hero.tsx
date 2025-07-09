@@ -153,17 +153,18 @@ const Hero = () => {
           <TypeAnimation
             sequence={[
               "🔒 Entusiasta em CyberSecurity",
-              
+              2000,
+              "🚓 Estagiário na Polícia Rodoviária Federal / PR",
+              2000,
+              "🛜 Foco em Redes e Internet",
               2000,
               "💻 Desenvolvedor Full Stack",
               2000,
-              "🛜 Foco em Redes",
-              2000,
-              "🚓 Estagiário na PRF",
-              2000,
               "🕵🏻️ Caçador de Easter Eggs",
               1000,
-              "Desenvolvedor Full Stack",
+              "☁️ Projetos em Nuvem com foco em Segurança",
+              2000,
+              "🧠 Sempre aprendendo. Sempre explorando.",
               2000,
             ]}
             wrapper="span"
@@ -178,7 +179,8 @@ const Hero = () => {
           transition={{ duration: 0.5, delay: 0.3 }}
           className="text-lg text-muted-foreground mb-8 max-w-2xl mx-auto md:mx-0"
         >
-          Segurança, Inovação e Performance em Cada Linha de Código e Desenvolvendo Soluções Seguras e Inovadoras. E me Especializando em Cybersecurity.
+          Desenvolvedor focado em segurança e performance.
+          Especializando-se em Cybersecurity e Infraestrutura, com projetos que unem cloud, redes e código seguro.
         </motion.p>
 
         <motion.div

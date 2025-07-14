@@ -9,6 +9,7 @@ import { ThemeProvider } from "@/components/theme-provider"
 // <<< 1. IMPORTE O SEU CONSOLE AQUI
 import DeveloperConsole from "@/components/developer-console"
 import { ConsoleToggleButton } from "@/components/ConsoleToggleButton";
+import Script from "next/script";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -50,6 +51,20 @@ export default function RootLayout({
         {/* <<< 2. ADICIONE O COMPONENTE DO CONSOLE AQUI */}
         {/* <DeveloperConsole /> */}
         <ConsoleToggleButton />
+
+        <Script 
+        strategy="afterInteractive" 
+        src="https://www.googletagmanager.com/gtag/js?id=G-EFXCZFJNK4" // <-- Meu ID aqui
+      />
+      <Script id="google-analytics" strategy="afterInteractive">
+        {`
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          
+          gtag('config', 'G-EFXCZFJNK4'); // <-- 
+        `}
+      </Script>
       </body>
     </html>
   )

@@ -1,6 +1,6 @@
 // Arquivo: middleware.ts
-
 import { NextRequest, NextResponse } from 'next/server';
+
 
 export function middleware(request: NextRequest) {
   // Gera um código único e aleatório a cada requisição
@@ -30,7 +30,7 @@ export function middleware(request: NextRequest) {
       headers: requestHeaders,
     },
   });
-  response.headers.set('Content-Security-Policy', cspHeader);
+// response.headers.set('Content-Security-Policy', cspHeader);
 
   return response;
 }

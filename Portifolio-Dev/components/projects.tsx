@@ -5,20 +5,29 @@ import { motion } from "framer-motion"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
-import { ChevronLeft, ChevronRight, Shield, Code, Brain, Network, Video, Search, Cloud, Router } from "lucide-react"
+import { ChevronLeft, ChevronRight, Shield, Code, Brain, Network, Video, Search, Cloud, Router, UserRoundXIcon } from "lucide-react"
 
 const projects = [
   {
     id: 1,
+    title: "Automação para Gerenciamento de Perfis Temporários (GCPW) na PRF",
+    description:
+      "Para solucionar o desafio do acúmulo de perfis de usuário temporários na Polícia Rodoviária Federal - PRF, desenvolvi um script PowerShell autônomo que utiliza o Registro do Windows para monitoramento. Implantada via Agendador de Tarefas, a solução garante a remoção completa dos perfis após um prazo definido, mantendo o ambiente de TI seguro e organizado.",
+    tags: ["PowerShell", "Google Credential Provider for Windows (GCPW)", "Automação", "Registro do Windows", "Agendador de Tarefas", "Arquitetura de TI"],
+    icon: <UserRoundXIcon className="w-6 h-6 text-red-600" />,
+    category: "Desenvolvimento e Segurança",
+  },
+  {
+    id: 2,
     title: "Acesso Remoto Seguro com MikroTik",
     description:
       "Implementação de solução de acesso remoto utilizando roteador MikroTik com funcionalidade Back To Home, superando limitações de CGNAT sem IP público. Estabeleci VPN estável e segura para gerenciamento remoto da rede, demonstrando expertise em cenários de infraestrutura complexos com recursos avançados de roteamento e tunelamento seguro.",
     tags: ["MikroTik", "VPN", "Back To Home", "CGNAT", "Remote Access", "Network Security"],
-    icon: <Router className="w-6 h-6 text-blue-600" />,
+    icon: <Router className="w-6 h-6 text-green-600" />,
     category: "Networking",
   },
   {
-    id: 2,
+    id: 3,
     title: "Laboratório Virtual em Nuvem",
     description:
       "Criação de ambiente de virtualização com VMware ESXi hospedado internacionalmente via Oracle Cloud. Configuração de máquinas virtuais focadas em simulações de segurança, incluindo protocolos de criptografia, firewall, SSH seguro e controle de acesso. Estrutura para testes práticos em ambientes isolados, reforçando experiência em cloud computing e virtualização.",
@@ -27,7 +36,7 @@ const projects = [
     category: "Cloud & Virtualization",
   },
   {
-    id: 3,
+    id: 4,
     title: "CryptoNet VPN",
     description:
       "Implementação de uma VPN segura utilizando OpenVPN na Oracle Cloud. O projeto foca em criptografia de dados e proteção de conexões, demonstrando conhecimentos em segurança de redes e infraestrutura em nuvem.",
@@ -36,16 +45,16 @@ const projects = [
     category: "Segurança",
   },
   {
-    id: 4,
+    id: 5,
     title: "Análise de Tráfego de Rede",
     description:
       "Projeto de monitoramento e análise de tráfego utilizando Wireshark e Nmap. Implementa técnicas de detecção de anomalias, identificação de malware e análise forense de pacotes em ambiente controlado.",
     tags: ["Wireshark", "Nmap", "Kali Linux", "Network Analysis", "Malware Detection"],
-    icon: <Search className="w-6 h-6 text-orange-600" />,
+    icon: <Search className="w-6 h-6 text-red-600" />,
     category: "Segurança",
   },
   {
-    id: 5,
+    id: 6,
     title: "Configuração de Infraestrutura Corporativa",
     description:
       "Implementação e configuração de switches Huawei S5720 e roteadores MikroTik RB 3011. Projeto inclui configuração de VLANs, QoS, políticas de segurança e monitoramento de rede em ambiente empresarial.",
@@ -54,7 +63,7 @@ const projects = [
     category: "Networking",
   },
   {
-    id: 6,
+    id: 7,
     title: "Sistema de Detecção de Phishing",
     description:
       "Desenvolvimento de sistema automatizado para detecção e análise de tentativas de phishing. Utiliza machine learning para identificar padrões suspeitos e implementa alertas em tempo real para proteção proativa.",
@@ -63,7 +72,7 @@ const projects = [
     category: "Segurança",
   },
   {
-    id: 7,
+    id: 8,
     title: "Jogo da Forca",
     description:
       "Aplicação interativa desenvolvida em Python que explora lógica de programação, manipulação de strings e integração com APIs. Demonstra conceitos fundamentais de desenvolvimento e experiência do usuário.",
@@ -72,16 +81,16 @@ const projects = [
     category: "Desenvolvimento",
   },
   {
-    id: 8,
+    id: 9,
     title: "Sistema de Reconhecimento Facial",
     description:
       "Sistema inteligente utilizando Python, OpenCV e Machine Learning para detecção e reconhecimento facial. Implementa algoritmos avançados de visão computacional e processamento de imagens.",
     tags: ["Python", "OpenCV", "Machine Learning", "Computer Vision"],
     icon: <Brain className="w-6 h-6 text-purple-600" />,
-    category: "IA/ML",
+    category: "IA/ML ",
   },
   {
-    id: 9,
+    id: 10,
     title: "Analisador de Vídeos YouTube",
     description:
       "Ferramenta automatizada que extrai áudio de vídeos do YouTube, realiza transcrição utilizando IA e gera resumos em formato Markdown. Integra múltiplas tecnologias para processamento de mídia.",
@@ -106,13 +115,17 @@ const Projects = () => {
     switch (category) {
       case "Segurança":
         return "bg-red-50 text-red-700 border-red-200 dark:bg-red-900/20 dark:text-red-400 dark:border-red-800"
+      case "Desenvolvimento e Segurança":
+        return "bg-red-50 text-red-700 border-red-200 dark:bg-red-900/20 dark:text-red-400 dark:border-red-800"
       case "Networking":
         return "bg-green-50 text-green-700 border-green-200 dark:bg-green-900/20 dark:text-green-400 dark:border-green-800"
       case "Cloud & Virtualization":
         return "bg-purple-50 text-purple-700 border-purple-200 dark:bg-purple-900/20 dark:text-purple-400 dark:border-purple-800"
       case "IA/ML":
         return "bg-orange-50 text-orange-700 border-orange-200 dark:bg-orange-900/20 dark:text-orange-400 dark:border-orange-800"
-      default:
+      case "IA/ML "://ROXO
+        return "bg-purple-50 text-purple-700 border-purple-200 dark:bg-purple-900/20 dark:text-purple-400 dark:border-purple-800"
+        default:
         return "bg-blue-50 text-blue-700 border-blue-200 dark:bg-blue-900/20 dark:text-blue-400 dark:border-blue-800"
     }
   }
@@ -202,7 +215,7 @@ const Projects = () => {
           className="mt-12 grid grid-cols-2 md:grid-cols-4 gap-4"
         >
           <Card className="professional-card p-4 text-center">
-            <div className="text-2xl font-bold text-primary mb-1">9</div>
+            <div className="text-2xl font-bold text-primary mb-1">10</div>
             <div className="text-sm text-muted-foreground">Projetos</div>
           </Card>
           <Card className="professional-card p-4 text-center">

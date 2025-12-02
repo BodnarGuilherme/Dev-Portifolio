@@ -27,7 +27,7 @@ export const metadata: Metadata = {
   title: "Guilherme Bodnar | Desenvolvedor",
   description:
     "Portfólio de Guilherme Bodnar - Desenvolvedor e estudante de Análise e Desenvolvimento de Sistemas",
-  generator: "v0.dev",
+  generator: "Bodnar-Dev Portfolio",
 };
 
 export default function RootLayout({

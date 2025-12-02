@@ -6,38 +6,48 @@ import { Card } from "@/components/ui/card"
 import { Code, Shield, Cloud, Network, Monitor } from "lucide-react"
 
 const About = () => {
-  const developmentSkills = ["Python", "Java", "C++", "JavaScript", "HTML5", "CSS", "C#", "PHP", "Next.js", "React", "UX/UI Design"]
+  const developmentSkills = [
+    "Python",
+    "Java",
+    "C++",
+    "Markdown",
+    "Node.js",
+    "TypeScript",
+    "Tailwind CSS",
+  ]
 
   const networkingSkills = [
-    "Huawei S5720-28X-PWR-LI-AC",
-    "MikroTik RB 3011",
-    "Configuração de Switches",
-    "Roteamento Avançado",
+    "MikroTik Routers",
+    "Huawei Switches",
+    "Firewall Configuration",
+    "VPNs [IPSec, OpenVPN, WireGuard]",
     "VLANs",
-    "QoS",
+    
   ]
 
   const securitySkills = [
-    "Kali Linux",
-    "Wireshark",
     "Nmap",
-    "Análise de Malware",
-    "Phishing Detection",
-    "Vulnerability Assessment",
-    "Penetration Testing",
-    "Security Auditing",
+    "Wireshark",
+    "LGPDP & Compliance",
+    "Hardening",
+    "Análise de Vulnerabilidades",
   ]
 
-  const ethicsMonitoringSkills = [
-    "Cyber Security Ethics",
-    "Network Monitoring",
-    "Incident Response",
+  const MonitoringOperations = [
+    "GLPI",
+    "Zabbix",
+    "Análise de Logs",
+    "Gestão de Incidentes",
     "Threat Intelligence",
-    "Security Compliance",
-    "Digital Forensics",
   ]
 
-  const cloudSkills = ["Azure", "Oracle Cloud", "GitHub", "SQL Server", "Firebase"]
+  const cloudSkills = [
+    "Oracle Cloud",
+    "SQL Server",
+    "Linux Server",
+    "Git & GitHub",
+    "Máquinas Virtuais (VMs)",
+  ]
 
   return (
     <section id="about" className="py-20 relative">
@@ -56,21 +66,21 @@ const About = () => {
           <div className="space-y-6 text-lg">
             <p className="leading-relaxed">
               Sou estudante de <strong>Análise e Desenvolvimento de Sistemas</strong>, com previsão de conclusão em
-              2025, e entusiasta em <strong>Cybersecurity</strong> e Infraestrutura de Redes. Aos 21 anos, atuo como
+              2026, e entusiasta em <strong>Cybersecurity</strong> e Infraestrutura de Redes. Aos 22 anos, atuo como
               estagiário na Superintendência da Polícia Rodoviária Federal (PRF) em Curitiba/PR, na Divisão de
               Tecnologia e Comunicação.
             </p>
 
             <p className="leading-relaxed">
               Possuo experiência prática em <span className="text-primary font-semibold">Desenvolvimento de Sistemas</span>,{" "}
-              <span className="text-primary font-semibold">Criação e Configuração de VPN</span>, (inclusive em cenários complexos como CGNAT),
-              configurações de equipamentos de Rede corporativos e análise de vulnerabilidades. Estou me especializando em{" "}
-              <strong>Cyber Security Ethics</strong>, monitoramento de redes e resposta a incidentes de segurança.
-            </p>
+              Criação e Configuração de <span className="text-primary font-semibold">VPN</span> (inclusive em cenários complexos como CGNAT),
+              configurações de equipamentos de Rede corporativos <span className="text-primary font-semibold">(Huawei/MikroTik)</span>,
+              atuando de forma colaborativa em projetos de alta disponibilidade e integração de novas tecnologias <strong>(como Starlink)</strong>, além de análise de vulnerabilidades. 
+              Estou direcionando minha carreira e futuros estudos de Pós Graduação para{" "} <span className="text-primary font-semibold">Cibersegurança e Defesa Cibernética</span>, com foco em monitoramento e resposta a incidentes.</p>
 
             <p className="leading-relaxed">
-              Meu foco está em desenvolver soluções seguras, implementar políticas de segurança robustas e manter a
-              integridade de sistemas críticos, sempre seguindo as melhores práticas éticas da área de Cibersegurança.
+              Meu objetivo é criar ambientes digitais resilientes, unindo desenvolvimento seguro e defesa de infraestrutura. 
+              Busco não apenas reagir a incidentes, mas antecipar ameaças para garantir a integridade de sistemas críticos, sempre pautado pela ética profissional.
             </p>
           </div>
         </Card>
@@ -145,10 +155,10 @@ const About = () => {
           <Card className="professional-card p-6">
             <div className="flex items-center gap-2 mb-4">
               <Monitor className="w-5 h-5 text-purple-600" />
-              <h3 className="text-xl font-semibold">Ética & Monitoramento</h3>
+              <h3 className="text-xl font-semibold">Monitoramento & Operações de TI (ITOps)</h3>
             </div>
             <div className="flex flex-wrap gap-2">
-              {ethicsMonitoringSkills.map((skill, index) => (
+              {MonitoringOperations.map((skill, index) => (
                 <motion.div
                   key={skill}
                   initial={{ opacity: 0, y: 10 }}

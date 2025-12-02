@@ -119,7 +119,7 @@ const Hero = () => {
                 >
                   <Shield className="w-4 h-4 mr-2" />
                 </motion.div>
-                <span>Desenvolvedor & Cybersecurity</span>
+                <span>Developer & Cybersecurity</span>
               </Badge>
             </motion.div>
           </div>
@@ -152,17 +152,17 @@ const Hero = () => {
         >
           <TypeAnimation
             sequence={[
-              "🔒 Entusiasta em CyberSecurity",
+              "🔒 Foco em Cibersegurança e Infraestrutura",
               2000,
-              "🚓 Estagiário na Polícia Rodoviária Federal / PR",
+              "🚓 Estagiário na PRF - Tecnologia e Comunicação",
               2000,
-              "🛜 Foco em Redes e Internet",
+              "💻 Unindo Desenvolvimento e Segurança",
               2000,
-              "💻 Desenvolvedor Full Stack",
+              "🛡️ Monitoramento, GLPI e Hardening",
               2000,
               "🕵🏻️ Caçador de Easter Eggs",
               1000,
-              "☁️ Projetos em Nuvem com foco em Segurança",
+              "☁️ Projetos em Cloud e Redes",
               2000,
               "🧠 Sempre aprendendo. Sempre explorando.",
               2000,
@@ -179,8 +179,8 @@ const Hero = () => {
           transition={{ duration: 0.5, delay: 0.3 }}
           className="text-lg text-muted-foreground mb-8 max-w-2xl mx-auto md:mx-0"
         >
-          Desenvolvedor focado em segurança e performance.
-          Especializando-se em Cybersecurity e Infraestrutura, com projetos que unem cloud, redes e código seguro.
+        Desenvolvedor & Analista de Infraestrutura. Especializando-se em Cibersegurança e Redes de Alta Disponibilidade.
+        Crio soluções que unem a lógica do código com a robustez da infraestrutura corporativa para garantir performance e proteção.
         </motion.p>
 
         <motion.div

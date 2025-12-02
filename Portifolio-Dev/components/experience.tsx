@@ -16,12 +16,12 @@ const experiences = [
     type: "Estágio",
     description: [
       "Desenvolvimento e manutenção de sistemas internos utilizando tecnologias modernas",
-      "Configuração e monitoramento de equipamentos de rede corporativos",
+      "Gestão e configuração de ativos de rede (Huawei/MikroTik) em infraestrutura",
       "Análise de vulnerabilidades e implementação de políticas de segurança",
       "Suporte técnico especializado em infraestrutura de TI",
-      "Participação em projetos de modernização tecnológica da instituição",
+      "Colaboração em projetos de conectividade POC-Starlink",
     ],
-    skills: ["Python", "Network Security", "System Administration", "Technical Support"],
+    skills: ["GLPI", "Network Operations", "MikroTik", "Huawei",],
     icon: <Building className="w-4 h-4 md:w-5 md:h-5 text-blue-600" />,
     color: "border-blue-200 bg-blue-50 dark:border-blue-800 dark:bg-blue-900/10",
   },
@@ -30,16 +30,16 @@ const experiences = [
     title: "Estudante de Análise e Desenvolvimento de Sistemas",
     company: "Instituição de Ensino Superior",
     location: "Curitiba, PR",
-    period: "2021 - 2025 (Previsão)",
+    period: "2026 (Previsão-Conclusão)",
     type: "Educação",
     description: [
-      "Formação técnica em desenvolvimento de software e sistemas",
-      "Especialização em segurança da informação e cybersecurity",
-      "Projetos práticos em desenvolvimento web e mobile",
+      "Formação técnica em Desenvolvimento de Software e Sistemas",
+      "Ênfase acadêmica em Segurança da Informação, Criptografia e Redes de Computadores",
+      "Desenvolvimento de aplicações com foco em código seguro",
       "Estudos avançados em banco de dados e arquitetura de sistemas",
-      "Participação em projetos acadêmicos e competições de programação",
+      "Participação em projetos acadêmicos de programação",
     ],
-    skills: ["Software Development", "Database Design", "Web Development", "System Architecture"],
+    skills: ["Software Development", "Clean code  ", "System Analysis", "Network Fundamentals"],
     icon: <GraduationCap className="w-4 h-4 md:w-5 md:h-5 text-green-600" />,
     color: "border-green-200 bg-green-50 dark:border-green-800 dark:bg-green-900/10",
   },
@@ -51,13 +51,13 @@ const experiences = [
     period: "2023 - Presente",
     type: "Freelance",
     description: [
-      "Desenvolvimento de soluções personalizadas para pequenas empresas",
-      "Criação de sistemas de segurança e monitoramento de redes",
-      "Consultoria em cybersecurity e análise de vulnerabilidades",
-      "Implementação de infraestrutura de rede para escritórios",
-      "Projetos de automação e análise de dados",
+      "Empreendedorismo & Consultoria Especializada - Bodnar Network Solutions",
+      "Consultoria e estruturação de redes Wi-Fi/Cabeadas e segurança e CFTV",
+      "Criação de sites e portfólios para pequenas empresas e profissionais autônomos",
+      "Implementação de infraestrutura de rede",
+      "Projetos de automação e scripts para otimização de tarefas",
     ],
-    skills: ["Full Stack Development", "Network Configuration", "Security Consulting", "Automation"],
+    skills: ["Development", "Network Configuration", "Access Control", "Automation"],
     icon: <Building className="w-4 h-4 md:w-5 md:h-5 text-purple-600" />,
     color: "border-purple-200 bg-purple-50 dark:border-purple-800 dark:bg-purple-900/10",
   },
@@ -85,7 +85,7 @@ const Experience = () => {
         </h2>
 
         <p className="text-center text-muted-foreground mb-8 md:mb-12 max-w-2xl mx-auto text-sm md:text-base px-4">
-          Minha jornada profissional e acadêmica em Tecnologia e Cybersecurity
+          Minha Jornada Profissional e Acadêmica em Development e Cybersecurity
         </p>
 
         <div className="relative px-4 md:px-0">
@@ -240,7 +240,7 @@ const Experience = () => {
               Interessado em colaborar ou saber mais sobre minha experiência?
             </p>
             <p className="text-muted-foreground text-sm md:text-base">
-              Estou sempre aberto a novas oportunidades e desafios na área de Tecnologia e Cybersecurity.
+              Estou sempre aberto a novas oportunidades e desafios na área de Desenvolvimento e Cibersegurança.
             </p>
           </Card>
         </motion.div>

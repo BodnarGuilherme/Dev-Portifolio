@@ -179,7 +179,7 @@ const Hero = () => {
           transition={{ duration: 0.5, delay: 0.3 }}
           className="text-lg text-muted-foreground mb-8 max-w-2xl mx-auto md:mx-0"
         >
-        Desenvolvedor & Analista de Infraestrutura. Especializando-se em Cibersegurança e Redes de Alta Disponibilidade.
+        Desenvolvedor & Analista de Segurança Jr. Especializando-se em Cibersegurança e Redes de Alta Disponibilidade.
         Crio soluções que unem a lógica do código com a robustez da infraestrutura corporativa para garantir performance e proteção.
         </motion.p>
 

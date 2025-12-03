@@ -65,8 +65,7 @@ const About = () => {
         <Card className="professional-card p-6 md:p-8 mb-8">
           <div className="space-y-6 text-lg">
             <p className="leading-relaxed">
-              Sou estudante de <strong>Análise e Desenvolvimento de Sistemas</strong>, com previsão de conclusão em
-              2026, e entusiasta em <strong>Cybersecurity</strong> e Infraestrutura de Redes. Aos 22 anos, atuo como
+              Desenvolvedor & Analista de Segurança Jr | Foco em Cibersegurança, Infraestrutura e Cloud. Aos 22 anos, atuo como
               estagiário na Superintendência da Polícia Rodoviária Federal (PRF) em Curitiba/PR, na Divisão de
               Tecnologia e Comunicação.
             </p>
